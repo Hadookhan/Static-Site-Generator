@@ -5,13 +5,13 @@ from htmlnode import HTMLNode
 class TestHTMLNode(unittest.TestCase):
 
     def test_default_init(self):
-        node = HTMLNode()
+        node = HTMLNode("p","this is a test message",3,"bold")
 
         # Checks if each instance variable is None
-        self.assertIsNone(node.tag)
-        self.assertIsNone(node.value)
-        self.assertIsNone(node.children)
-        self.assertIsNone(node.props)
+        self.assertIsNotNone(node.tag)
+        self.assertIsNotNone(node.value)
+        self.assertIsNotNone(node.children)
+        self.assertIsNotNone(node.props)
 
     def test_props_to_node(self):
         node = HTMLNode("<h1>", "This is a html node", [], {"href": "https://www.google.com", "target": "_blank",})
