@@ -20,7 +20,7 @@ class HTMLNode:
         return(joined_str)
     
     def __repr__(self) -> str:
-        return f"HTMLNode: {self.tag}, {self.value}, {self.children}, {self.props}"
+        return f"HTMLNode({self.tag}, {self.value}, {self.children}, {self.props})"
     
 class LeafNode(HTMLNode):
     def __init__(self,value, tag=None, props=None):
@@ -35,6 +35,9 @@ class LeafNode(HTMLNode):
     
     def __setitem__(self, key, value):
         raise Exception("Cannot add children to a LeafNode")
+
+    def __repr__(self):
+        return f"LeafNode({self.tag}, {self.value}, {self.props})"
     
 class ParentNode(HTMLNode):
     def __init__(self, children, tag=None, props=None):
@@ -60,5 +63,8 @@ class ParentNode(HTMLNode):
         result += f"</{self.tag}>"
         
         return result
+    
+    def __repr__(self):
+        return f"ParentNode({self.tag}, children: {self.children}, {self.props})"
         
         
